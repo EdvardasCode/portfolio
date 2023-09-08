@@ -7,8 +7,8 @@ export default function Computer(props) {
   const { nodes: cable } = useGLTF("/cables.glb")
 
   const { cable_color, monitor_color } = useControls({
-    cable_color: "#ffffff",
-    monitor_color: "#ffffff",
+    cable_color: "#000000",
+    monitor_color: "#A0A7A3",
   })
 
   return (
