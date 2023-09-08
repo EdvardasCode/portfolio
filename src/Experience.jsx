@@ -27,6 +27,7 @@ export default function Experience(props) {
         shadow-camera-right={5}
         shadow-camera-bottom={-5}
         shadow-camera-left={-5}
+        shadow-normalBias={0.04}
       />
 
       {/* Components */}
