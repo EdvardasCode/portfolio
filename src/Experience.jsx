@@ -3,10 +3,10 @@ import Computer from "./components/Computer"
 import PictureKobe from "./components/PictureKobe"
 import PictureKyoto from "./components/PictureKyoto"
 import PotTree from "./components/PotTree"
+import Wall from "./components/Wall"
 
 export default function Experience(props) {
   const gltf = useGLTF("desk-set.glb")
-  const wall = useGLTF("wall.glb")
   return (
     <>
       <ambientLight intensity={0.5} />
@@ -16,7 +16,7 @@ export default function Experience(props) {
       <PotTree position={[-0.1, -0.56, 0.1]} />
       <Computer position={[0, -0.5, 0]} />
       <primitive object={gltf.scene} scale={1} position-y={-0.5} />
-      <primitive object={wall.scene} scale={1} position-y={-0.5} />
+      <Wall />
     </>
   )
 }
