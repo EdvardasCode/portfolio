@@ -1,11 +1,21 @@
 import { useGLTF, Html } from "@react-three/drei"
+import { useControls } from "leva"
 
-export default function PictureKobe({ position }) {
-  const pictureKobe = useGLTF("pictureKobe.glb")
+export default function PictureKobe(props) {
+  const { nodes } = useGLTF("pictureKobe.glb")
+
+  const { picture_kobe } = useControls({
+    picture_kobe: "#C9FFD9",
+  })
 
   return (
     <>
-      <primitive object={pictureKobe.scene} scale={1.3} position={position}>
+      <group {...props}>
+        <group rotation={[0, 0, Math.PI / 2]} scale={0.14}>
+          <mesh castShadow geometry={nodes.Cube105.geometry}>
+            <meshStandardMaterial color={picture_kobe} />
+          </mesh>
+        </group>
         <Html
           scale={0.03}
           transform={true}
@@ -14,7 +24,7 @@ export default function PictureKobe({ position }) {
         >
           <img src="Kobe.gif" />
         </Html>
-      </primitive>
+      </group>
     </>
   )
 }
