@@ -1,5 +1,6 @@
 import { useGLTF } from "@react-three/drei"
 import Computer from "./components/Computer"
+import DeskSet from "./components/DeskSetup"
 import PictureKobe from "./components/PictureKobe"
 import PictureKyoto from "./components/PictureKyoto"
 import PotTree from "./components/PotTree"
@@ -15,7 +16,7 @@ export default function Experience(props) {
       <PictureKyoto position={[-0.1, 0.5, -0.53]} />
       <PotTree position={[-0.1, -0.56, 0.1]} />
       <Computer position={[0, -0.5, 0]} />
-      <primitive object={gltf.scene} scale={1} position-y={-0.5} />
+      <DeskSet position-y={-0.5} />
       <Wall />
     </>
   )
