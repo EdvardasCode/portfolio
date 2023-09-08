@@ -1,4 +1,4 @@
-import { useGLTF } from "@react-three/drei"
+import { BakeShadows, useGLTF } from "@react-three/drei"
 import Computer from "./components/Computer"
 import DeskSet from "./components/DeskSetup"
 import PictureKobe from "./components/PictureKobe"
@@ -12,8 +12,24 @@ export default function Experience(props) {
   const gltf = useGLTF("desk-set.glb")
   return (
     <>
+      {/* Shadows and lights */}
+      <BakeShadows />
       <ambientLight intensity={0.5} />
-      <pointLight color="beige" position={[0, 2, 3]} intensity={0.6} />
+      <directionalLight
+        color="beige"
+        position={[1, 2, 3]}
+        castShadow
+        shadow-mapSize={[2024, 2024]}
+        intensity={0.6}
+        shadow-camera-near={1}
+        shadow-camera-far={10}
+        shadow-camera-top={5}
+        shadow-camera-right={5}
+        shadow-camera-bottom={-5}
+        shadow-camera-left={-5}
+      />
+
+      {/* Components */}
       <PictureKobe position={[-0.7, 0.2, -0.53]} />
       <PictureKyoto position={[-0.1, 0.5, -0.53]} />
       <PotTree position={[-0.1, -0.56, 0.1]} />
