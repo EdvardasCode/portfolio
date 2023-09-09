@@ -1,6 +1,7 @@
 import { BakeShadows, useGLTF } from "@react-three/drei"
 import Computer from "./components/Computer"
 import DeskSet from "./components/DeskSetup"
+import Food from "./components/Food"
 import PictureKobe from "./components/PictureKobe"
 import PictureKyoto from "./components/PictureKyoto"
 import PotTree from "./components/PotTree"
@@ -25,7 +26,7 @@ export default function Experience(props) {
         shadow-camera-far={10}
         shadow-camera-top={5}
         shadow-camera-right={5}
-        shadow-camera-bottom={-5}
+        shadow-camera-bottom={-0.6}
         shadow-camera-left={-5}
         shadow-normalBias={0.04}
       />
@@ -39,6 +40,7 @@ export default function Experience(props) {
       <Shelves position-y={-0.4} />
       <ReactLogo position-y={-0.4} />
       <Wall />
+      <Food position-y={-0.499} />
     </>
   )
 }

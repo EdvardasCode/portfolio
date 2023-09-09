@@ -17,7 +17,6 @@ export default function DeskSet(props) {
   return (
     <group {...props} dispose={null}>
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.pad.geometry}
         position={[-0.456, 0.2, 0.366]}
@@ -26,7 +25,6 @@ export default function DeskSet(props) {
         <meshStandardMaterial color={mouse_pad} />
       </mesh>
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.Cube.geometry}
         position={[0.001, 0.106, 0]}
@@ -44,7 +42,6 @@ export default function DeskSet(props) {
         <meshStandardMaterial color={table} />
       </mesh>
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.Cube006.geometry}
         position={[-0.626, 0.222, -0.247]}
@@ -74,7 +71,6 @@ export default function DeskSet(props) {
         <meshStandardMaterial color={book_cover_2} />
       </mesh>
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.Cube005.geometry}
         position={[-0.626, 0.186, -0.28]}
@@ -84,7 +80,6 @@ export default function DeskSet(props) {
         <meshStandardMaterial color={paper} />
       </mesh>
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.Cube002.geometry}
         position={[-0.64, 0.15, -0.244]}
