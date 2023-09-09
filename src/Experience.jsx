@@ -6,11 +6,11 @@ import PictureKobe from "./components/PictureKobe"
 import PictureKyoto from "./components/PictureKyoto"
 import PotTree from "./components/PotTree"
 import ReactLogo from "./components/ReactLogo"
+import RemoteCar from "./components/RemoteCar"
 import Shelves from "./components/Shelves"
 import Wall from "./components/Wall"
 
 export default function Experience(props) {
-  const gltf = useGLTF("desk-set.glb")
   return (
     <>
       {/* Shadows and lights */}
@@ -40,6 +40,7 @@ export default function Experience(props) {
       <Shelves position-y={-0.4} />
       <ReactLogo position-y={-0.4} />
       <Wall />
+      <RemoteCar position-y={-0.499} />
       <Food position-y={-0.499} />
     </>
   )
