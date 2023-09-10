@@ -7,7 +7,6 @@ export default function BoomBox(props) {
   const [song] = useState(() => new Audio("/rose-garden.mp3"))
 
   useEffect(() => {
-    console.log(playing)
     if (playing) {
       song.play()
     } else {
