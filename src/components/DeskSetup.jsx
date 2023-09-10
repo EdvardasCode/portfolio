@@ -1,6 +1,7 @@
 import React from "react"
 import { useGLTF } from "@react-three/drei"
 import { useControls } from "leva"
+import { RigidBody } from "@react-three/rapier"
 
 export default function DeskSet(props) {
   const { nodes } = useGLTF("/desk-set.glb")
@@ -24,14 +25,18 @@ export default function DeskSet(props) {
       >
         <meshStandardMaterial color={mouse_pad} />
       </mesh>
-      <mesh
-        receiveShadow
-        geometry={nodes.Cube.geometry}
-        position={[0.001, 0.106, 0]}
-        scale={[0.493, 0.245, 0.308]}
-      >
-        <meshStandardMaterial color={table} />
-      </mesh>
+
+      <RigidBody type="fixed">
+        <mesh
+          receiveShadow
+          geometry={nodes.Cube.geometry}
+          position={[0.001, 0.106, 0]}
+          scale={[0.493, 0.245, 0.308]}
+        >
+          <meshStandardMaterial color={table} />
+        </mesh>
+      </RigidBody>
+
       <mesh
         castShadow
         receiveShadow

@@ -1,4 +1,5 @@
 import { BakeShadows, useGLTF } from "@react-three/drei"
+import { Physics } from "@react-three/rapier"
 import BoomBox from "./components/BoomBox"
 import Computer from "./components/Computer"
 import DeskSet from "./components/DeskSetup"
@@ -34,19 +35,21 @@ export default function Experience(props) {
       />
 
       {/* Components */}
-      <PictureKobe position={[-0.7, 0.2, -0.53]} />
-      <PictureKyoto position={[-0.1, 0.5, -0.53]} />
-      <PotTree position={[-0.1, -0.56, 0.1]} />
-      <Computer position={[0, -0.5, 0]} />
-      <DeskSet position-y={-0.5} />
-      <Shelves position-y={-0.4} />
-      <ReactLogo position-y={-0.4} />
-      <Wall />
-      <RemoteCar position-y={-0.499} />
-      <Food position-y={-0.499} />
-      <Food position-y={-0.499} />
-      <OldComputer />
-      <BoomBox />
+      <Physics debug>
+        <PictureKobe position={[-0.7, 0.2, -0.53]} />
+        <PictureKyoto position={[-0.1, 0.5, -0.53]} />
+        <PotTree position={[-0.1, -0.56, 0.1]} />
+        <Computer position={[0, -0.5, 0]} />
+        <DeskSet position-y={-0.5} />
+        <Shelves position-y={-0.4} />
+        <ReactLogo position-y={-0.4} />
+        <Wall />
+        <RemoteCar position-y={-0.499} />
+        <Food position-y={-0.499} />
+        <Food position-y={-0.499} />
+        <OldComputer />
+        <BoomBox />
+      </Physics>
     </>
   )
 }
