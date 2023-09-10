@@ -7,7 +7,7 @@ export default function ReactLogo(props) {
     <Float
       floatingRange={[0.1, 0.001]}
       speed={4}
-      floatIntensity={0.3}
+      floatIntensity={0.2}
       rotationIntensity={0.5}
     >
       <primitive {...props} object={reactLogo.scene} />

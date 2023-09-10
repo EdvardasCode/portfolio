@@ -1,4 +1,5 @@
 import { BakeShadows, useGLTF } from "@react-three/drei"
+import BoomBox from "./components/BoomBox"
 import Computer from "./components/Computer"
 import DeskSet from "./components/DeskSetup"
 import Food from "./components/Food"
@@ -45,6 +46,7 @@ export default function Experience(props) {
       <Food position-y={-0.499} />
       <Food position-y={-0.499} />
       <OldComputer />
+      <BoomBox />
     </>
   )
 }
