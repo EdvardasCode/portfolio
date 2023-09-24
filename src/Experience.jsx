@@ -41,7 +41,7 @@ export default function Experience(props) {
       />
 
       {/* Components */}
-      <Physics debug>
+      <Physics>
         <PictureKobe position={[-0.7, 0.2, -0.53]} />
         <PictureKyoto position={[-0.1, 0.5, -0.53]} />
         <PotTree position={[-0.1, -0.56, 0.1]} />
