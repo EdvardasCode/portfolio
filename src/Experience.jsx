@@ -1,6 +1,9 @@
-import { BakeShadows, useGLTF } from "@react-three/drei"
+import { BakeShadows, Html } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
+import * as THREE from "three"
 import { Physics } from "@react-three/rapier"
 import BoomBox from "./components/BoomBox"
+import Clock from "./components/Clock"
 import Computer from "./components/Computer"
 import DeskSet from "./components/DeskSetup"
 import Food from "./components/Food"
@@ -14,6 +17,9 @@ import Shelves from "./components/Shelves"
 import Wall from "./components/Wall"
 
 export default function Experience(props) {
+  useFrame((state, delta) => {
+    const cameraPosition = new THREE.Vector3()
+  })
   return (
     <>
       {/* Shadows and lights */}
@@ -49,6 +55,7 @@ export default function Experience(props) {
         <Food position-y={-0.499} />
         <OldComputer />
         <BoomBox />
+        <Clock />
       </Physics>
     </>
   )
