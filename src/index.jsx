@@ -19,7 +19,7 @@ root.render(
         position: [0, 0, 1.5],
       }}
     >
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
       <Experience />
     </Canvas>
     <Interface />

@@ -7,12 +7,14 @@ export default create((set) => {
       set(({ cameraPosition }) => {
         if (cameraPosition === "far") return { cameraPosition: "mid" }
         if (cameraPosition === "mid") return { cameraPosition: "close" }
+        return { cameraPosition: "close" }
       })
     },
     moveBackward: () => {
       set(({ cameraPosition }) => {
         if (cameraPosition === "close") return { cameraPosition: "mid" }
         if (cameraPosition === "mid") return { cameraPosition: "far" }
+        return { cameraPosition: "far" }
       })
     },
   }
