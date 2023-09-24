@@ -15,10 +15,25 @@ import ReactLogo from "./components/ReactLogo"
 import RemoteCar from "./components/RemoteCar"
 import Shelves from "./components/Shelves"
 import Wall from "./components/Wall"
+import useStore from "./store/useStore"
 
 export default function Experience(props) {
+  const { cameraPosition } = useStore()
   useFrame((state, delta) => {
-    const cameraPosition = new THREE.Vector3()
+    const cameraPos = new THREE.Vector3()
+    cameraPos.copy(state.camera.position)
+    if (cameraPosition === "far") {
+      cameraPos.z = 1.5
+      state.camera.position.copy(cameraPos)
+    }
+    if (cameraPosition === "mid") {
+      cameraPos.z = 1
+      state.camera.position.copy(cameraPos)
+    }
+    if (cameraPosition === "close") {
+      cameraPos.z = 0.3
+      state.camera.position.copy(cameraPos)
+    }
   })
   return (
     <>
