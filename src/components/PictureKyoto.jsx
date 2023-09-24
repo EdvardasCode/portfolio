@@ -16,9 +16,9 @@ export default function PictureKyoto(props) {
         </group>
         <Html
           transform={true}
-          position={[-0.011, -0.005, 0.001]}
+          position={[-0.011, -0.003, 0.001]}
           occlude="blending"
-          scale={0.0045}
+          scale={0.004}
         >
           <img src="Kyoto.jpg" />
         </Html>

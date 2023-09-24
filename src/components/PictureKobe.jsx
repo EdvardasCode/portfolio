@@ -17,7 +17,7 @@ export default function PictureKobe(props) {
           </mesh>
         </group>
         <Html
-          scale={0.03}
+          scale={0.028}
           transform={true}
           position={[0, 0.025, 0.001]}
           occlude="blending"
