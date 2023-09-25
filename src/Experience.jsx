@@ -32,6 +32,7 @@ export default function Experience(props) {
     }
     if (cameraPosition === "close") {
       cameraPos.z = 0.3
+      cameraPos.y = 0.02
       state.camera.position.copy(cameraPos)
     }
   })
