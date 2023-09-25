@@ -234,7 +234,7 @@ export default function Clock(props) {
         rotation={[0, 0, -0.625]}
         scale={[0.035, 0.005, 0.007]}
       >
-        {[2, 6, 8].includes(time[2]) ? (
+        {[2, 6, 8, 0].includes(time[2]) ? (
           <meshStandardMaterial color="red" />
         ) : (
           <meshStandardMaterial color="#414141" />
