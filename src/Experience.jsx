@@ -19,23 +19,23 @@ import useStore from "./store/useStore"
 
 export default function Experience(props) {
   const { cameraPosition } = useStore()
-  useFrame((state, delta) => {
-    const cameraPos = new THREE.Vector3()
-    cameraPos.copy(state.camera.position)
-    if (cameraPosition === "far") {
-      cameraPos.z = 1.5
-      state.camera.position.copy(cameraPos)
-    }
-    if (cameraPosition === "mid") {
-      cameraPos.z = 1
-      state.camera.position.copy(cameraPos)
-    }
-    if (cameraPosition === "close") {
-      cameraPos.z = 0.3
-      cameraPos.y = 0.02
-      state.camera.position.copy(cameraPos)
-    }
-  })
+  // useFrame((state, delta) => {
+  //   const cameraPos = new THREE.Vector3()
+  //   cameraPos.copy(state.camera.position)
+  //   if (cameraPosition === "far") {
+  //     cameraPos.z = 1.5
+  //     state.camera.position.copy(cameraPos)
+  //   }
+  //   if (cameraPosition === "mid") {
+  //     cameraPos.z = 1
+  //     state.camera.position.copy(cameraPos)
+  //   }
+  //   if (cameraPosition === "close") {
+  //     cameraPos.z = 0.3
+  //     cameraPos.y = 0.02
+  //     state.camera.position.copy(cameraPos)
+  //   }
+  // })
   return (
     <>
       {/* Shadows and lights */}
@@ -57,7 +57,7 @@ export default function Experience(props) {
       />
 
       {/* Components */}
-      <Physics>
+      <Physics debug>
         <PictureKobe position={[-0.7, 0.2, -0.53]} />
         <PictureKyoto position={[-0.1, 0.5, -0.53]} />
         <PotTree position={[-0.1, -0.56, 0.1]} />
