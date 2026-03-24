@@ -1,11 +1,14 @@
 {
-  "name": "threejs-journey-exercise",
+  "name": "pexortfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
+  },
+  "engines": {
+    "node": "24.x"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.0",
