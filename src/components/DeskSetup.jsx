@@ -1,10 +1,10 @@
-import React from "react"
-import { useGLTF } from "@react-three/drei"
-import { useControls } from "leva"
-import { RigidBody } from "@react-three/rapier"
+import React from "react";
+import { useGLTF } from "@react-three/drei";
+import { useControls } from "leva";
+import { RigidBody } from "@react-three/rapier";
 
 export default function DeskSet(props) {
-  const { nodes } = useGLTF("/desk-set.glb")
+  const { nodes } = useGLTF("/desk-set.glb");
   const { mouse_pad, table, paper, book_cover_1, book_cover_2, book_cover_3 } =
     useControls({
       mouse_pad: "#F9F9F9",
@@ -13,7 +13,7 @@ export default function DeskSet(props) {
       book_cover_1: "#9B5A45",
       book_cover_2: "#9B5A45",
       book_cover_3: "#454545",
-    })
+    });
 
   return (
     <group {...props} dispose={null}>
@@ -26,7 +26,7 @@ export default function DeskSet(props) {
         <meshStandardMaterial color={mouse_pad} />
       </mesh>
 
-      <RigidBody type="fixed">
+      <RigidBody type="fixed" colliders="cuboid">
         <mesh
           receiveShadow
           geometry={nodes.Cube.geometry}
@@ -104,7 +104,7 @@ export default function DeskSet(props) {
         <meshStandardMaterial color={book_cover_3} />
       </mesh>
     </group>
-  )
+  );
 }
 
-useGLTF.preload("/desk-set.glb")
+useGLTF.preload("/desk-set.glb");

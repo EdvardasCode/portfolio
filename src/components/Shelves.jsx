@@ -4,7 +4,7 @@ import { useControls } from "leva"
 
 export default function Shelves(props) {
   const { nodes } = useGLTF("/shelf-support.glb")
-  const { nodes: shelfs } = useGLTF("/top-shelf.glb")
+  const { nodes: shelves } = useGLTF("/top-shelf.glb")
   const { shelf_support, shelf } = useControls({
     shelf_support: "#8B8061",
     shelf: "#799982",
@@ -15,7 +15,7 @@ export default function Shelves(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={shelfs.topShelf.geometry}
+        geometry={shelves.topShelf.geometry}
         position={[0.114, 0.978, -0.505]}
         scale={0.035}
       >
@@ -24,7 +24,7 @@ export default function Shelves(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={shelfs.topShelf.geometry}
+        geometry={shelves.topShelf.geometry}
         position={[0.114, 0.654, -0.505]}
         scale={0.035}
       >
