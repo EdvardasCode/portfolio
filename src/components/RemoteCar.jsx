@@ -1,140 +1,64 @@
-import { Box, Cylinder, useGLTF } from "@react-three/drei"
-import { useFrame } from "@react-three/fiber"
-import { RigidBody, useRevoluteJoint } from "@react-three/rapier"
-import { createRef, useRef } from "react"
+import { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { RigidBody } from "@react-three/rapier";
+import { Vector3, Quaternion } from "three";
 
-const WheelJoint = ({ body, wheel, bodyAnchor, wheelAnchor, rotationAxis }) => {
-  const joint = useRevoluteJoint(body, wheel, [
-    bodyAnchor,
-    wheelAnchor,
-    rotationAxis,
-  ])
+const ACCELERATION = 10;
+const MAX_SPEED = 30;
+
+export default function RemoteCar(props) {
+  const { scene } = useGLTF("/car-remote.glb");
+  const chassisBody = useRef(null);
+  const driveDirection = useRef(null);
 
   useFrame(() => {
-    if (joint.current) {
-      joint.current.configureMotorVelocity(20, 10)
-    }
-  })
+    const chassis = chassisBody.current;
+    if (!chassis || !driveDirection.current) return;
 
-  return null
-}
+    const rotation = chassis.rotation();
+    const chassisQuat = new Quaternion(
+      rotation.x,
+      rotation.y,
+      rotation.z,
+      rotation.w,
+    );
+    const forward = new Vector3(0, 0, 1).applyQuaternion(chassisQuat);
+    const currentVelocity = chassis.linvel();
+    const speed = new Vector3(currentVelocity.x, 0, currentVelocity.z).length();
+    if (speed >= MAX_SPEED) return;
 
-export default function RemoteCar() {
-  const bodyRef = useRef(null)
+    const sign = driveDirection.current === "forward" ? 1 : -1;
+    chassis.applyImpulse(
+      {
+        x: forward.x * ACCELERATION * sign,
+        y: 0,
+        z: forward.z * ACCELERATION * sign,
+      },
+      true,
+    );
+  });
 
-  const { nodes, materials } = useGLTF("/car-remote.glb")
+  const drive = (direction) => {
+    driveDirection.current = direction;
+  };
+
+  const stop = () => {
+    driveDirection.current = null;
+  };
+
   return (
-    <group
+    <RigidBody
+      ref={chassisBody}
+      mass={1500}
       position={[0.631, 0.132, -0.208]}
       rotation={[-Math.PI, 0.211, -Math.PI]}
-      scale={0.07}
+      colliders="hull"
+      friction={1.5}
+      linearDamping={0.5}
+      angularDamping={0.5}
     >
-      <RigidBody colliders="cuboid" ref={bodyRef} type="dynamic">
-        <group name="chassis">
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_body002.geometry}
-            material={materials.plastic}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_body002_1.geometry}
-            material={materials.paintGreen}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_body002_2.geometry}
-            material={materials.lightFront}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_body002_3.geometry}
-            material={materials["_defaultMat.002"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_body002_4.geometry}
-            material={materials.window}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_body002_5.geometry}
-            material={materials.lightBack}
-          />
-        </group>
-      </RigidBody>
-      <RigidBody colliders="hull">
-        <group
-          position={[-0.35, 0.3, 0.76]}
-          rotation={[-Math.PI, 0, 0]}
-          scale={-1}
-        >
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_wheel_frontLeft002.geometry}
-            material={materials["carTire.002"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_wheel_frontLeft002_1.geometry}
-            material={materials["_defaultMat.003"]}
-          />
-        </group>
-        <group position={[0.35, 0.3, 0.76]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_wheel_frontLeft002.geometry}
-            material={materials["carTire.002"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_wheel_frontLeft002_1.geometry}
-            material={materials["_defaultMat.003"]}
-          />
-        </group>
-        <group
-          position={[-0.35, 0.3, -0.86]}
-          rotation={[-Math.PI, 0, 0]}
-          scale={-1}
-        >
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_wheel_frontLeft002.geometry}
-            material={materials["carTire.002"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_wheel_frontLeft002_1.geometry}
-            material={materials["_defaultMat.003"]}
-          />
-        </group>
-        <group position={[0.35, 0.3, -0.86]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_wheel_frontLeft002.geometry}
-            material={materials["carTire.002"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh_wheel_frontLeft002_1.geometry}
-            material={materials["_defaultMat.003"]}
-          />
-        </group>
-      </RigidBody>
-    </group>
-  )
+      <primitive object={scene} scale={0.6} />
+    </RigidBody>
+  );
 }

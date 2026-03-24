@@ -2,19 +2,19 @@ import { create } from "zustand"
 
 export default create((set) => {
   return {
-    cameraPosition: "far",
-    moveForward: () => {
-      set(({ cameraPosition }) => {
-        if (cameraPosition === "far") return { cameraPosition: "mid" }
-        if (cameraPosition === "mid") return { cameraPosition: "close" }
-        return { cameraPosition: "close" }
+    cameraZoom: "far",
+    zoomIn: () => {
+      set(({ cameraZoom }) => {
+        if (cameraZoom === "far") return { cameraZoom: "mid" }
+        if (cameraZoom === "mid") return { cameraZoom: "close" }
+        return { cameraZoom: "close" }
       })
     },
-    moveBackward: () => {
-      set(({ cameraPosition }) => {
-        if (cameraPosition === "close") return { cameraPosition: "mid" }
-        if (cameraPosition === "mid") return { cameraPosition: "far" }
-        return { cameraPosition: "far" }
+    zoomOut: () => {
+      set(({ cameraZoom }) => {
+        if (cameraZoom === "close") return { cameraZoom: "mid" }
+        if (cameraZoom === "mid") return { cameraZoom: "far" }
+        return { cameraZoom: "far" }
       })
     },
   }

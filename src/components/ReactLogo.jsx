@@ -1,6 +1,6 @@
 import React from "react"
 import { Float, useGLTF } from "@react-three/drei"
-Float
+
 export default function ReactLogo(props) {
   const reactLogo = useGLTF("/react.glb")
   return (
