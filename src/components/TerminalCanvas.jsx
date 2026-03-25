@@ -245,6 +245,7 @@ const TerminalCanvas = forwardRef(function TerminalCanvas(
 
   useImperativeHandle(ref, () => ({
     focus() {
+      if (focused.current) return
       focused.current = true
       cursorVisible.current = true
       blinkIntervalRef.current = setInterval(() => {
