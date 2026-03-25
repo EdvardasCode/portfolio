@@ -17,7 +17,7 @@ export default function Computer(props) {
 
   const { screenPosition, screenSize } = useControls("screen", {
     screenPosition: { value: [0, 0.52, -0.13], step: 0.01 },
-    screenSize: { value: [0.56, 0.33], step: 0.005 },
+    screenSize: { value: [0.56, 0.32], step: 0.005 },
   });
 
   const handleScreenClick = (event) => {
@@ -54,15 +54,11 @@ export default function Computer(props) {
       </group>
       <mesh position={screenPosition} onClick={handleScreenClick}>
         <planeGeometry args={screenSize} />
-        {screenTexture ? (
-          <meshStandardMaterial
-            map={screenTexture}
-            emissive="#ffb000"
-            emissiveIntensity={0.1}
-          />
-        ) : (
-          <meshStandardMaterial color="#0a0800" />
-        )}
+        <meshBasicMaterial
+          key={screenTexture ? "screen-active" : "screen-loading"}
+          map={screenTexture}
+          toneMapped={false}
+        />
       </mesh>
       <TerminalCanvas ref={terminalRef} onTextureReady={setScreenTexture} />
     </group>

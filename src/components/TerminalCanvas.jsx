@@ -1,4 +1,5 @@
 import { useEffect, useRef, forwardRef, useImperativeHandle } from "react"
+import { useFrame } from "@react-three/fiber"
 import * as THREE from "three"
 import {
   PASSWORD,
@@ -26,7 +27,6 @@ const TerminalCanvas = forwardRef(function TerminalCanvas(
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const textureRef = useRef(null)
-  const bootedRef = useRef(false)
 
   const outputLines = useRef([])
   const displayedText = useRef("")
@@ -243,6 +243,12 @@ const TerminalCanvas = forwardRef(function TerminalCanvas(
     }
   }
 
+  useFrame(() => {
+    if (textureRef.current) {
+      textureRef.current.needsUpdate = true
+    }
+  })
+
   useImperativeHandle(ref, () => ({
     focus() {
       if (focused.current) return
@@ -270,8 +276,15 @@ const TerminalCanvas = forwardRef(function TerminalCanvas(
   }))
 
   useEffect(() => {
-    if (bootedRef.current) return
-    bootedRef.current = true
+    outputLines.current = []
+    displayedText.current = ""
+    isAnimating.current = false
+    inputValue.current = ""
+    loggedIn.current = false
+    loginPhase.current = null
+    scrollOffset.current = 0
+    fullTextRef.current = ""
+    onAnimationCompleteRef.current = null
 
     const canvas = document.createElement("canvas")
     canvas.width = CANVAS_WIDTH
@@ -285,6 +298,7 @@ const TerminalCanvas = forwardRef(function TerminalCanvas(
     charWidthRef.current = context.measureText("M").width
 
     const texture = new THREE.CanvasTexture(canvas)
+    texture.colorSpace = THREE.SRGBColorSpace
     texture.minFilter = THREE.LinearFilter
     texture.magFilter = THREE.LinearFilter
     texture.needsUpdate = true
@@ -304,11 +318,15 @@ const TerminalCanvas = forwardRef(function TerminalCanvas(
     return () => {
       if (textureRef.current) {
         textureRef.current.dispose()
+        textureRef.current = null
       }
+      contextRef.current = null
+      canvasRef.current = null
       clearInterval(blinkIntervalRef.current)
       clearTimeout(typewriterTimeoutRef.current)
       if (keydownHandlerRef.current) {
         window.removeEventListener("keydown", keydownHandlerRef.current)
+        keydownHandlerRef.current = null
       }
     }
   }, [])
