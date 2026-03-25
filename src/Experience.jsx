@@ -15,6 +15,7 @@ import ReactLogo from "./components/ReactLogo";
 import RemoteCar from "./components/RemoteCar";
 import Shelves from "./components/Shelves";
 import Wall from "./components/Wall";
+import StickyNote from "./components/StickyNote";
 import useStore from "./store/useStore";
 
 export default function Experience(props) {
@@ -70,6 +71,7 @@ export default function Experience(props) {
         <OldComputer />
         <BoomBox />
         <Clock />
+        <StickyNote position={[-0.35, -0.33, 0.25]} />
       </Physics>
     </>
   );
