@@ -40,13 +40,13 @@ export default function Experience(props) {
   return (
     <>
       <BakeShadows />
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1.5} />
       <directionalLight
         color="beige"
         position={[1, 2, 3]}
         castShadow
         shadow-mapSize={[2024, 2024]}
-        intensity={0.6}
+        intensity={1.8}
         shadow-camera-near={1}
         shadow-camera-far={10}
         shadow-camera-top={5}
