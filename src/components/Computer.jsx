@@ -17,7 +17,7 @@ export default function Computer(props) {
 
   const { screenPosition, screenSize } = useControls("screen", {
     screenPosition: { value: [0, 0.52, -0.13], step: 0.01 },
-    screenSize: { value: [0.56, 0.31], step: 0.005 },
+    screenSize: { value: [0.56, 0.33], step: 0.005 },
   });
 
   const handleScreenClick = (event) => {
@@ -27,7 +27,11 @@ export default function Computer(props) {
   };
 
   return (
-    <group {...props} dispose={null} onPointerMissed={() => terminalRef.current?.blur()}>
+    <group
+      {...props}
+      dispose={null}
+      onPointerMissed={() => terminalRef.current?.blur()}
+    >
       <group position={[0.066, 0.352, -0.28]} scale={0.051}>
         <mesh castShadow receiveShadow geometry={nodes.Cube103.geometry}>
           <meshStandardMaterial color={monitor_color} />
@@ -48,10 +52,7 @@ export default function Computer(props) {
           <meshStandardMaterial color={cable_color} />
         </mesh>
       </group>
-      <mesh
-        position={screenPosition}
-        onClick={handleScreenClick}
-      >
+      <mesh position={screenPosition} onClick={handleScreenClick}>
         <planeGeometry args={screenSize} />
         {screenTexture ? (
           <meshStandardMaterial

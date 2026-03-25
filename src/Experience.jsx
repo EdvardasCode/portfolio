@@ -57,7 +57,7 @@ export default function Experience(props) {
       />
 
       <Physics>
-        <PictureKobe position={[-0.7, 0.2, -0.53]} />
+        <PictureKobe position={[-0.85, 0.2, -0.53]} />
         <PictureKyoto position={[-0.1, 0.5, -0.53]} />
         <PotTree position={[-0.1, -0.56, 0.1]} />
         <Computer position={[0, -0.5, 0]} />
