@@ -15,6 +15,7 @@ import ReactLogo from "./components/ReactLogo";
 import RemoteCar from "./components/RemoteCar";
 import Shelves from "./components/Shelves";
 import Wall from "./components/Wall";
+import StickyNote from "./components/StickyNote";
 import useStore from "./store/useStore";
 
 export default function Experience(props) {
@@ -56,7 +57,7 @@ export default function Experience(props) {
       />
 
       <Physics>
-        <PictureKobe position={[-0.7, 0.2, -0.53]} />
+        <PictureKobe position={[-0.85, 0.2, -0.53]} />
         <PictureKyoto position={[-0.1, 0.5, -0.53]} />
         <PotTree position={[-0.1, -0.56, 0.1]} />
         <Computer position={[0, -0.5, 0]} />
@@ -70,6 +71,7 @@ export default function Experience(props) {
         <OldComputer />
         <BoomBox />
         <Clock />
+        <StickyNote position={[-0.35, -0.33, 0.25]} />
       </Physics>
     </>
   );
