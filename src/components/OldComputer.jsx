@@ -1,8 +1,7 @@
-import React from "react"
-import { useGLTF } from "@react-three/drei"
+import { useGLTF } from "@react-three/drei";
 
 export default function OldComputer(props) {
-  const { nodes, materials } = useGLTF("/old-school-PC.glb")
+  const { nodes, materials } = useGLTF("/old-school-PC.glb");
   return (
     <group {...props} dispose={null}>
       <group
@@ -24,7 +23,7 @@ export default function OldComputer(props) {
         />
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload("/old-school-PC.glb")
+useGLTF.preload("/old-school-PC.glb");
