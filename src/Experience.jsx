@@ -17,6 +17,7 @@ import Shelves from "./components/Shelves";
 import Wall from "./components/Wall";
 import StickyNote from "./components/StickyNote";
 import useStore from "./store/useStore";
+import { Hologram } from "./components/Hologram";
 
 export default function Experience(props) {
   const { cameraZoom } = useStore();
@@ -58,6 +59,7 @@ export default function Experience(props) {
 
       <Physics>
         <PictureKobe position={[-0.85, 0.2, -0.53]} />
+        <Hologram position={[0, 0, 0]} />
         <PictureKyoto position={[-0.1, 0.5, -0.53]} />
         <PotTree position={[-0.1, -0.56, 0.1]} />
         <Computer position={[0, -0.5, 0]} />
